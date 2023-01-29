@@ -1,5 +1,14 @@
 <template>
   <v-list-item
+    style="background-color: white"
+    :style="
+      reorder
+        ? {
+            borderLeft: '2px solid #1976D2',
+            marginLeft: '-2px',
+          }
+        : {}
+    "
     :class="{ 'bg-blue': song.played }"
     @click="song.played = !song.played"
   >
@@ -15,12 +24,7 @@
     >
 
     <template v-slot:append>
-      <v-btn
-        @click.stop="removeSong(song.id)"
-        color="red"
-        icon="mdi-trash-can-outline"
-        variant="text"
-      ></v-btn>
+      <MenuEdit :songProp="songProp" />
     </template>
   </v-list-item>
 
@@ -29,9 +33,10 @@
 
 <script>
 import { useSongsStore } from "@/store/songs";
+import MenuEdit from "./MenuEdit.vue";
 
 export default {
-  props: ["songProp"],
+  props: ["songProp", "reorder"],
   data: () => ({
     song: null,
     songsStore: useSongsStore(),
@@ -44,5 +49,6 @@ export default {
       this.songsStore.removeSong(id);
     },
   },
+  components: { MenuEdit },
 };
 </script>

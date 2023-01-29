@@ -27,15 +27,7 @@
     >
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
-      <v-toolbar-title>Application</v-toolbar-title>
-
-      <template v-slot:append>
-        <v-btn icon="mdi-heart"></v-btn>
-
-        <v-btn icon="mdi-magnify"></v-btn>
-
-        <v-btn icon="mdi-dots-vertical"></v-btn>
-      </template>
+      <v-toolbar-title> <InputSong /></v-toolbar-title>
     </v-app-bar>
 
     <v-main>
@@ -45,7 +37,12 @@
 </template>
 
 <script>
+import InputSong from "@/components/Songs/InputSong.vue";
+
 export default {
+  components: {
+    InputSong,
+  },
   data: () => ({
     drawer: null,
     items: [
