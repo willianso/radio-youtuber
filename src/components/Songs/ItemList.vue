@@ -10,7 +10,7 @@
         : {}
     "
     :class="{ 'bg-blue': song.played }"
-    @click="song.played = !song.played"
+    @click="songsStore.playedSong(song)"
   >
     <template v-slot:prepend="{}">
       <v-list-item-action start>
