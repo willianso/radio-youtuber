@@ -8,18 +8,29 @@ export default {
         this.items = songs;
       });
   },
-  addSong(title) {
-    db.collection("songs").add({
-      id: new Date().getTime(),
-      title,
-      played: false,
-    });
+  addSong(newSong) {
+    const id = new Date().getTime();
 
-    this.items.push({
-      id: this.id++,
-      title,
-      played: false,
-    });
+    db.collection("songs")
+      .add({
+        id,
+        title: newSong.title,
+        value: newSong.value,
+        position: newSong.position,
+        played: false,
+      })
+      .then((response) => {
+        this.items.push({
+          id,
+          title: newSong.title,
+          value: newSong.value,
+          position: newSong.position,
+          played: false,
+        });
+      })
+      .catch((error) => {
+        console.log("There was an error, do something else.");
+      });
   },
   removeSong(id) {
     db.collection("songs")
@@ -48,11 +59,22 @@ export default {
     db.collection("songs")
       .doc({ id: newSong.id })
       .update({
-        played: !newSong.played
+        played: !newSong.played,
       })
       .then(() => {
         let song = this.items.find((song) => song.id === newSong.id);
-        if (song) song.title = newSong.title;
+        if (song) {
+          song.played = !newSong.played;
+        }
+      });
+  },
+  reorderList() {
+    db.collection("songs")
+      .delete()
+      .then(() => {
+        this.items.forEach( (item) => {
+           db.collection("songs").add({ ...item });
+        });
       });
   },
 };

@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="dialog" persistent>
+  <v-dialog v-model="dialog">
     <!-- <template v-slot:activator="{ props }">
       <v-btn color="primary" v-bind="props"> Open Dialog </v-btn>
     </template> -->
@@ -27,10 +27,10 @@
           variant="text"
           @click="$emit('closeModal')"
         >
-          Close
+          Fechar
         </v-btn>
         <v-btn color="blue-darken-1" variant="text" @click="editSong">
-          Save
+          Salvar
         </v-btn>
       </v-card-actions>
     </v-card>

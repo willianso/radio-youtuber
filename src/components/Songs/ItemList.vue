@@ -1,6 +1,5 @@
 <template>
   <v-list-item
-    style="background-color: white"
     :style="
       reorder
         ? {
@@ -9,7 +8,7 @@
           }
         : {}
     "
-    :class="{ 'bg-blue': song.played }"
+    :class="{ 'bg-red-darken-4': song.played }"
     @click="songsStore.playedSong(song)"
   >
     <template v-slot:prepend="{}">
@@ -24,6 +23,11 @@
     >
 
     <template v-slot:append>
+      <v-list-item-title
+        class="mr-5 text-green font-weight-black"
+        :class="{ 'text-decoration-line-through': song.played }"
+        >R$ {{ song.value }}</v-list-item-title
+      >
       <MenuEdit :songProp="songProp" />
     </template>
   </v-list-item>

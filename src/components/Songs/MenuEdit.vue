@@ -3,7 +3,6 @@
     <v-menu transition="slide-y-transition">
       <template v-slot:activator="{ props }">
         <v-btn
-          color="primary"
           variant="text"
           icon="mdi-dots-vertical"
           v-bind="props"

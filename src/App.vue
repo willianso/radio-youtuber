@@ -1,6 +1,6 @@
 <template>
   <v-app id="inspire">
-    <v-navigation-drawer v-model="drawer">
+    <!-- <v-navigation-drawer v-model="drawer">
       <v-list>
         <v-list-item
           prepend-avatar="https://randomuser.me/api/portraits/women/85.jpg"
@@ -18,14 +18,12 @@
           :title="item.title"
         ></v-list-item>
       </v-list>
-    </v-navigation-drawer>
+    </v-navigation-drawer> -->
 
     <v-app-bar
-      color="teal-darken-4"
       density="prominent"
-      image="https://picsum.photos/1920/1080?random"
     >
-      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+      <!-- <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon> -->
 
       <v-toolbar-title> <InputSong /></v-toolbar-title>
     </v-app-bar>
